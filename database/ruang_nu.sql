@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `rooms` (
 -- Dumping data for table ruang_nu.rooms: ~9 rows (approximately)
 DELETE FROM `rooms`;
 INSERT INTO `rooms` (`id`, `name`, `location`, `capacity`, `img_room`, `is_available`, `created_at`, `updated_at`) VALUES
-	(1, 'ruang 313', 'gedung 1 lantai 3', 35, 'Screenshot 2025-01-23 144738.png', 'available', '2025-01-25 21:12:54', '2025-01-25 21:17:39'),
+	(1, 'Ruang Kelas', 'Gedung 1 lantai 3', 35, 'ruang_kelas.jpg', 'available', '2025-01-25 21:12:54', '2025-01-25 21:17:39'),
 	(2, 'Ruang Sidang Utama', 'Gedung Rektorat Lantai 2', 100, 'ruang_sidang.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
 	(3, 'Ruang Seminar A', 'Gedung Kuliah Barat Lantai 3', 50, 'seminar_a.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
 	(4, 'Laboratorium Komputer', 'Gedung Teknik Informatika', 40, 'lab_komputer.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),

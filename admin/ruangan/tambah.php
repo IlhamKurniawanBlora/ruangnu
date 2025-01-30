@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle image upload
     if (isset($_FILES['img_room']) && $_FILES['img_room']['error'] === UPLOAD_ERR_OK) {
         $img_name = basename($_FILES['img_room']['name']);
-        $img_path = '../../uploads/' . $img_name;
+        $img_path = '../../uploads/rooms/' . $img_name;
 
         if (move_uploaded_file($_FILES['img_room']['tmp_name'], $img_path)) {
             $stmt = $conn->prepare("INSERT INTO rooms (name, location, capacity, img_room, is_available) VALUES (?, ?, ?, ?, ?)");
