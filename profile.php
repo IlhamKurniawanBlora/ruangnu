@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($_FILES['profile_image']['name'])) {
         $image_name = time() . '_' . $_FILES['profile_image']['name'];
-        $target_dir = 'uploads/';
+        $target_dir = 'uploads/profiles/';
         $target_file = $target_dir . $image_name;
 
         if (move_uploaded_file($_FILES['profile_image']['tmp_name'], $target_file)) {
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <!-- Profile Section -->
         <div class="text-center">
             <div class="relative inline-block">
-                <img src="uploads/<?php echo htmlspecialchars($users['img_prfl'] ?: 'default.png'); ?>" 
+                <img src="uploads/profiles/<?php echo htmlspecialchars($users['img_prfl'] ?: 'default.png'); ?>" 
                      alt="Profile Image" 
                      class="w-32 h-32 rounded-full mx-auto object-cover border-4 border-gray-300">
                 <label for="profile_image" 

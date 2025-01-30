@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Handle image upload
     if (isset($_FILES['img_room']) && $_FILES['img_room']['error'] === UPLOAD_ERR_OK) {
         $img_name = basename($_FILES['img_room']['name']);
-        $img_path = '../../uploads/' . $img_name;
+        $img_path = '../../uploads/rooms/' . $img_name;
 
         if (move_uploaded_file($_FILES['img_room']['tmp_name'], $img_path)) {
             $stmt = $conn->prepare("UPDATE rooms SET name = ?, location = ?, capacity = ?, img_room = ?, is_available = ? WHERE id = ?");
@@ -95,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <label class="block text-green-700 font-bold mb-2">Unggah Gambar</label>
                     <input type="file" name="img_room" id="img_room" accept="image/*" class="w-full px-3 py-2 border border-green-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500">
                     <div id="img_preview" class="mt-4">
-                        <img id="preview_image" src="../../uploads/<?php echo htmlspecialchars($room['img_room']); ?>" alt="Preview Gambar" class="w-32 h-32 object-cover border border-green-300 rounded-lg">
+                        <img id="preview_image" src="../../uploads/rooms/<?php echo htmlspecialchars($room['img_room']); ?>" alt="Preview Gambar" class="w-32 h-32 object-cover border border-green-300 rounded-lg">
                     </div>
                 </div>
                 <div>
