@@ -20,6 +20,58 @@ DROP DATABASE IF EXISTS `ruang_nu`;
 CREATE DATABASE IF NOT EXISTS `ruang_nu` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
 USE `ruang_nu`;
 
+-- Dumping structure for table ruang_nu.users
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `nim` varchar(100) NOT NULL,
+  `img_prfl` varchar(100) NOT NULL DEFAULT 'profile.jpg',
+  `password` varchar(255) NOT NULL,
+  `role` enum('superadmin','admin','mahasiswa') DEFAULT 'mahasiswa',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `email` (`email`),
+  UNIQUE KEY `nim` (`nim`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table ruang_nu.users: ~3 rows (approximately)
+DELETE FROM `users`;
+INSERT INTO `users` (`id`, `name`, `email`, `nim`, `img_prfl`, `password`, `role`, `created_at`, `updated_at`) VALUES
+	(1, 'ilham', 'ilhamkurniawanjateng@gmail.com', '231111016', 'profile.jpg', '$2y$10$kE.xSJQuJE6l7JL4gAcfFOfTow.jImnHArNycGrU.RLjnO2mi1Gn6', 'superadmin', '2025-01-25 07:11:23', '2025-01-25 14:14:50'),
+	(3, 'mahasiswa', 'mahasiswa@gmail.com', '2311313', 'profile.jpg', '$2y$10$cnw47ol5phSdEWMS4hr9xee9bMSkNi62YQekYOXS4DAPmTqWNieIG', 'mahasiswa', '2025-01-25 20:48:24', '2025-01-25 20:57:51'),
+	(4, 'admin', 'admin@gmail.com', '2333333', 'profile.jpg', '$2y$10$tOqxwu3gHdRrPCrLBKWRh.BZM2.zIHl8c8dnEVdlT12ckPe9Zt9PK', 'admin', '2025-01-26 08:03:30', '2025-01-26 08:03:30');
+
+-- Dumping structure for table ruang_nu.rooms
+DROP TABLE IF EXISTS `rooms`;
+CREATE TABLE IF NOT EXISTS `rooms` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) NOT NULL,
+  `location` varchar(150) NOT NULL,
+  `capacity` int NOT NULL,
+  `img_room` varchar(100) NOT NULL DEFAULT 'room.jpg',
+  `is_available` enum('available','occupied','maintenance') NOT NULL DEFAULT 'available',
+  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `img_room` (`img_room`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Dumping data for table ruang_nu.rooms: ~9 rows (approximately)
+DELETE FROM `rooms`;
+INSERT INTO `rooms` (`id`, `name`, `location`, `capacity`, `img_room`, `is_available`, `created_at`, `updated_at`) VALUES
+	(1, 'ruang 313', 'gedung 1 lantai 3', 35, 'Screenshot 2025-01-23 144738.png', 'available', '2025-01-25 21:12:54', '2025-01-25 21:17:39'),
+	(2, 'Ruang Sidang Utama', 'Gedung Rektorat Lantai 2', 100, 'ruang_sidang.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
+	(3, 'Ruang Seminar A', 'Gedung Kuliah Barat Lantai 3', 50, 'seminar_a.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
+	(4, 'Laboratorium Komputer', 'Gedung Teknik Informatika', 40, 'lab_komputer.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
+	(5, 'Aula Serbaguna', 'Gedung Pusat Lantai 1', 200, 'aula_serbaguna.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
+	(6, 'Ruang Rapat Senat', 'Gedung Rektorat Lantai 3', 30, 'ruang_rapat_senat.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
+	(7, 'Studio Multimedia', 'Gedung Komunikasi Lantai 2', 25, 'studio_multimedia.jpg', 'available', '2025-01-25 23:05:06', '2025-01-26 08:04:28'),
+	(8, 'Ruang Workshop', 'Gedung Teknik Lantai 1', 35, 'workshop_room.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
+	(9, 'Ruang Diskusi', 'Perpustakaan Lantai 2', 20, 'diskusi_room.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06');
+
 -- Dumping structure for table ruang_nu.activity_logs
 DROP TABLE IF EXISTS `activity_logs`;
 CREATE TABLE IF NOT EXISTS `activity_logs` (
@@ -90,33 +142,6 @@ INSERT INTO `booking_logs` (`id`, `booking_id`, `action`, `log_message`, `create
 	(7, 18, 'approved', 'Status berubah menjadi approved', '2025-01-26 08:30:09'),
 	(8, 13, 'updated', 'Status berubah menjadi completed', '2025-01-26 08:31:59');
 
--- Dumping structure for table ruang_nu.rooms
-DROP TABLE IF EXISTS `rooms`;
-CREATE TABLE IF NOT EXISTS `rooms` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `location` varchar(150) NOT NULL,
-  `capacity` int NOT NULL,
-  `img_room` varchar(100) NOT NULL DEFAULT 'room.jpg',
-  `is_available` enum('available','occupied','maintenance') NOT NULL DEFAULT 'available',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `img_room` (`img_room`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table ruang_nu.rooms: ~9 rows (approximately)
-DELETE FROM `rooms`;
-INSERT INTO `rooms` (`id`, `name`, `location`, `capacity`, `img_room`, `is_available`, `created_at`, `updated_at`) VALUES
-	(1, 'ruang 313', 'gedung 1 lantai 3', 35, 'Screenshot 2025-01-23 144738.png', 'available', '2025-01-25 21:12:54', '2025-01-25 21:17:39'),
-	(2, 'Ruang Sidang Utama', 'Gedung Rektorat Lantai 2', 100, 'ruang_sidang.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
-	(3, 'Ruang Seminar A', 'Gedung Kuliah Barat Lantai 3', 50, 'seminar_a.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
-	(4, 'Laboratorium Komputer', 'Gedung Teknik Informatika', 40, 'lab_komputer.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
-	(5, 'Aula Serbaguna', 'Gedung Pusat Lantai 1', 200, 'aula_serbaguna.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
-	(6, 'Ruang Rapat Senat', 'Gedung Rektorat Lantai 3', 30, 'ruang_rapat_senat.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
-	(7, 'Studio Multimedia', 'Gedung Komunikasi Lantai 2', 25, 'studio_multimedia.jpg', 'available', '2025-01-25 23:05:06', '2025-01-26 08:04:28'),
-	(8, 'Ruang Workshop', 'Gedung Teknik Lantai 1', 35, 'workshop_room.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06'),
-	(9, 'Ruang Diskusi', 'Perpustakaan Lantai 2', 20, 'diskusi_room.jpg', 'available', '2025-01-25 23:05:06', '2025-01-25 23:05:06');
 
 -- Dumping structure for table ruang_nu.settings
 DROP TABLE IF EXISTS `settings`;
@@ -132,29 +157,6 @@ CREATE TABLE IF NOT EXISTS `settings` (
 -- Dumping data for table ruang_nu.settings: ~0 rows (approximately)
 DELETE FROM `settings`;
 
--- Dumping structure for table ruang_nu.users
-DROP TABLE IF EXISTS `users`;
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(100) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `nim` varchar(100) NOT NULL,
-  `img_prfl` varchar(100) NOT NULL DEFAULT 'profile.jpg',
-  `password` varchar(255) NOT NULL,
-  `role` enum('superadmin','admin','mahasiswa') DEFAULT 'mahasiswa',
-  `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
-  `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `email` (`email`),
-  UNIQUE KEY `nim` (`nim`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
--- Dumping data for table ruang_nu.users: ~3 rows (approximately)
-DELETE FROM `users`;
-INSERT INTO `users` (`id`, `name`, `email`, `nim`, `img_prfl`, `password`, `role`, `created_at`, `updated_at`) VALUES
-	(1, 'ilham', 'ilhamkurniawanjateng@gmail.com', '231111016', 'profile.jpg', '$2y$10$kE.xSJQuJE6l7JL4gAcfFOfTow.jImnHArNycGrU.RLjnO2mi1Gn6', 'superadmin', '2025-01-25 07:11:23', '2025-01-25 14:14:50'),
-	(3, 'mahasiswa', 'mahasiswa@gmail.com', '2311313', 'profile.jpg', '$2y$10$cnw47ol5phSdEWMS4hr9xee9bMSkNi62YQekYOXS4DAPmTqWNieIG', 'mahasiswa', '2025-01-25 20:48:24', '2025-01-25 20:57:51'),
-	(4, 'admin', 'admin@gmail.com', '2333333', 'profile.jpg', '$2y$10$tOqxwu3gHdRrPCrLBKWRh.BZM2.zIHl8c8dnEVdlT12ckPe9Zt9PK', 'admin', '2025-01-26 08:03:30', '2025-01-26 08:03:30');
 
 /*!40103 SET TIME_ZONE=IFNULL(@OLD_TIME_ZONE, 'system') */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
