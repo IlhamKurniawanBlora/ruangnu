@@ -158,10 +158,12 @@ document.head.insertAdjacentHTML('beforeend', `
         .fc-custom-container {
             position: relative;
             z-index: 1;
-            background: white;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
             padding: 1.5rem;
             border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.18);
         }
         
         .fc-header-toolbar {
@@ -173,209 +175,140 @@ document.head.insertAdjacentHTML('beforeend', `
             color: #065f46 !important;
             font-weight: 700 !important;
             font-size: 1.5rem !important;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
+        /* Glassmorphism Buttons */
         .fc-button {
-            padding: 0.5rem 1rem !important;
+            background: rgba(255, 255, 255, 0.25) !important;
+            backdrop-filter: blur(4px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            padding: 0.6rem 1.2rem !important;
             font-weight: 500 !important;
             border-radius: 0.5rem !important;
-            transition: all 0.2s ease !important;
-        }
-
-        .fc-button-primary {
-            background: linear-gradient(135deg, #10B981, #059669) !important;
-            border: none !important;
-            box-shadow: 0 2px 4px rgba(16, 185, 129, 0.2) !important;
+            color: #065f46 !important;
+            transition: all 0.3s ease !important;
+            text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
         }
         
-        .fc-button-primary:hover {
-            background: linear-gradient(135deg, #059669, #047857) !important;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.3) !important;
+        .fc-button:hover {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9)) !important;
+            transform: translateY(-2px);
+            color: white !important;
+            box-shadow: 0 6px 12px rgba(16, 185, 129, 0.2) !important;
         }
         
         .fc-button-active {
-            background: linear-gradient(135deg, #047857, #065f46) !important;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.9), rgba(4, 120, 87, 0.9)) !important;
+            color: white !important;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1) !important;
         }
 
+        /* Calendar Body */
+        .fc-view {
+            background: rgba(255, 255, 255, 0.5) !important;
+            backdrop-filter: blur(4px);
+            border-radius: 0.75rem;
+            overflow: hidden;
+        }
+
         .fc-day {
-            background: white !important;
-            transition: background-color 0.2s ease !important;
+            background: rgba(255, 255, 255, 0.3) !important;
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease !important;
         }
 
         .fc-day:hover {
-            background: #f0fdf4 !important;
+            background: rgba(240, 253, 244, 0.5) !important;
         }
 
         .fc-day-today {
-            background: #ecfdf5 !important;
+            background: rgba(236, 253, 245, 0.6) !important;
         }
 
-        .fc-day-today .fc-daygrid-day-number {
-            background: linear-gradient(135deg, #10B981, #059669);
-            color: white !important;
-            padding: 4px 12px !important;
-            border-radius: 9999px;
-            margin: 8px;
-            font-weight: 600;
+        /* Event Styling */
+        .fc-event {
+            backdrop-filter: blur(4px);
+            border: none !important;
+            margin: 2px !important;
+            transition: all 0.3s ease !important;
         }
 
-        .fc-daygrid-day-number {
-            color: #1f2937 !important;
-            padding: 8px !important;
-            font-weight: 500;
-            font-size: 0.95rem !important;
-        }
-        
-        .fc-day-sat, .fc-day-sun {
-            background: #f8fafc !important;
+        .fc-event:hover {
+            transform: translateY(-1px) scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .fc-day-past {
-            background: #ffffff !important;
-        }
-
+        /* Header and Navigation */
         .fc th {
-            padding: 1rem 0 !important;
-            background: #ffffff !important;
-            color: #4b5563 !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            backdrop-filter: blur(4px);
+            color: #065f46 !important;
             font-weight: 600 !important;
             text-transform: uppercase;
             font-size: 0.75rem !important;
             letter-spacing: 0.05em;
+            padding: 1rem 0 !important;
         }
 
-        .fc-theme-standard td, .fc-theme-standard th {
-            border-color: #f3f4f6 !important;
-        }
-
-        .fc-scrollgrid {
-            border-radius: 0.75rem;
-            overflow: hidden;
-            border: 1px solid #e5e7eb !important;
-        }
-
-        .fc-view-harness {
-            background: white;
-            border-radius: 0.75rem;
-            overflow: hidden;
-        }
-
-        .fc-event {
-            border: none !important;
-            margin: 2px !important;
-            padding: 2px !important;
-        }
-
-        .fc-daygrid-event {
-            border-radius: 0.5rem !important;
-            padding: 4px 8px !important;
-            font-size: 0.875rem !important;
-        }
-
-        .fc-event-main {
-            padding: 2px 4px !important;
-        }
-
-        .fc-event-time {
-            font-size: 0.75rem !important;
-            font-weight: 500 !important;
-        }
-
-        .fc-event-title {
-            font-weight: 500 !important;
-        }
-
-        .fc-popover {
-            border-radius: 0.5rem !important;
-            border: none !important;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !important;
-        }
-
-        .fc-popover-header {
-            background: linear-gradient(135deg, #10B981, #059669) !important;
-            color: white !important;
-            padding: 0.75rem !important;
-            font-weight: 600 !important;
-            border-top-left-radius: 0.5rem !important;
-            border-top-right-radius: 0.5rem !important;
-        }
-
-        .fc-popover-body {
-            padding: 0.75rem !important;
-        }
-
+        /* More Link */
         .fc-more-link {
-            background: linear-gradient(135deg, #10B981, #059669) !important;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9)) !important;
             color: white !important;
             padding: 2px 8px !important;
             border-radius: 9999px !important;
+            backdrop-filter: blur(4px);
             font-size: 0.75rem !important;
             font-weight: 500 !important;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .fc-timegrid-slot {
-            height: 45px !important;
+        /* Popover */
+        .fc-popover {
+            background: rgba(255, 255, 255, 0.9) !important;
+            backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.18) !important;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15) !important;
+            border-radius: 0.5rem !important;
         }
 
-        .fc-timegrid-axis {
-            padding: 1rem !important;
-            font-weight: 500 !important;
-            color: #4b5563 !important;
+        .fc-popover-header {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9)) !important;
+            color: white !important;
+            padding: 0.75rem !important;
+            font-weight: 600 !important;
         }
 
-        .fc-timegrid-now-indicator-line {
-            border-color: #10B981 !important;
-            border-width: 2px !important;
-        }
-
-        .fc-timegrid-now-indicator-arrow {
-            border-color: #10B981 !important;
-            border-width: 5px !important;
-        }
-
-        /* Hover effects */
-        .fc-event:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: all 0.2s ease;
-        }
-
-        /* Modal styling tetap sama dengan penyesuaian */
+        /* Modal */
         #bookingDetailModal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            z-index: 9999;
             backdrop-filter: blur(8px);
         }
-        
+
         #bookingDetailModal .bg-white {
-            max-height: 90vh;
-            overflow-y: auto;
-            border-radius: 1rem;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
         }
-        
-        #bookingDetailModal .bg-white::-webkit-scrollbar {
-            width: 4px;
+
+        /* Custom Scrollbar */
+        .fc-scroller::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
         }
-        
-        #bookingDetailModal .bg-white::-webkit-scrollbar-track {
-            background: #f1f1f1;
-            border-radius: 2px;
+
+        .fc-scroller::-webkit-scrollbar-track {
+            background: rgba(243, 244, 246, 0.5);
         }
-        
-        #bookingDetailModal .bg-white::-webkit-scrollbar-thumb {
-            background: #10B981;
-            border-radius: 2px;
+
+        .fc-scroller::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #10B981, #059669);
+            border-radius: 3px;
         }
-        
-        #bookingDetailModal .bg-white::-webkit-scrollbar-thumb:hover {
-            background: #059669;
+
+        .fc-scroller::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #059669, #047857);
         }
     </style>
 `);

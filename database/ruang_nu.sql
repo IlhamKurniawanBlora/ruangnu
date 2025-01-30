@@ -46,7 +46,7 @@ INSERT INTO `users` (`id`, `name`, `email`, `nim`, `img_prfl`, `password`, `role
 
 -- Dumping structure for table ruang_nu.rooms
 DROP TABLE IF EXISTS `rooms`;
-CREATE TABLE IF NOT EXISTS `rooms` (
+ssCREATE TABLE IF NOT EXISTS `rooms` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(100) NOT NULL,
   `location` varchar(150) NOT NULL,

@@ -161,7 +161,6 @@ $rejectedBookings = $conn->query("SELECT COUNT(*) as count FROM bookings WHERE s
 
         <!-- Approved Bookings Section -->
         <div class="mt-8">
-            <h2 class="text-xl font-semibold mb-4 bg-gradient-to-r from-green-800 to-emerald-600 bg-clip-text text-transparent">Kalender Peminjaman</h2>
             <?php include 'kalender.php'; ?>
         </div>
 

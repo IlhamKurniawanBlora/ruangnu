@@ -2,6 +2,12 @@
 
 **RuangNU** adalah aplikasi web berbasis PHP untuk memfasilitasi sistem peminjaman ruangan di Universitas Nahdlatul Ulama Yogyakarta. Aplikasi ini dirancang untuk memberikan pengalaman pengguna yang mudah dan responsif dengan fitur manajemen ruangan, autentikasi pengguna, dan sistem persetujuan peminjaman.
 
+
+## Developer
+- Ilham Kurniawan
+- Mohammad Fattachul 'Alim
+- Adyana Wabilhadi Chanigia
+
 ## Fitur Utama
 
 - **Landing Page:** Tampilan awal untuk pengenalan aplikasi.
@@ -20,14 +26,33 @@
 
 ## Screenshots
 
-### Login
-![Login Page](images_readme/login.png)
+### Landing Page
+![Landing Page](images_readme/landingpage.png)
 
 ### Dashboard
 ![Dashboard](images_readme/dashboard.png)
 
-### Landing Page
-![Landing Page](images_readme/landingpage.png)
+### Kalender
+![Kalender](images_readme/kalender.png)
+
+### Login
+![Login Page](images_readme/login.png)
+
+### Booking
+![Booking](images_readme/booking.png)
+
+### Riwayat Booking
+![Riwayat Booking](images_readme/riwayat_booking.png)
+
+
+
+
+
+
+
+
+
+
 
 ## Instalasi
 

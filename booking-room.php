@@ -97,6 +97,7 @@ $bookings_result = $bookings_stmt->get_result();
     <title>Booking Ruangan</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <link href="/assets/css/glass-style.css" rel="stylesheet">
 </head>
 <body class="bg-green-50">
 <?php include 'components/navigationApp.php';  ?>
